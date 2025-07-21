@@ -1,3 +1,6 @@
+type TVShowsLists = 'now_playing' | 'popular' | 'top_rated' | 'upcoming'
+
+
 export async function getTVShowsList(value: string) {
   const res = await fetch(`https://api.themoviedb.org/3/tv/${value}?language=ru-RU&page=1`, {
     method: 'GET',

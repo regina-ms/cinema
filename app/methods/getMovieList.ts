@@ -1,6 +1,6 @@
-type MovieLists = 'now_playing' | 'popular' | 'top_rated' | 'upcoming'
+export type TMovieList = 'now_playing' | 'popular' | 'top_rated' | 'upcoming'
 
-export async function getMovieLists(value:string) {
+export async function getMovieList(value:string) {
     const res = await fetch(`https://api.themoviedb.org/3/movie/${value}?language=ru-RU&page=1`, {
         method: 'GET',
         headers: {

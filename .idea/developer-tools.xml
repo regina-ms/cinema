@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DeveloperToolsToolWindowSettingsV1" lastSelectedContentNodeId="url-base64-encoder-decoder">
+    <developerToolsConfigurations>
+      <developerToolConfiguration developerToolId="url-encoding-encoder-decoder" id="43d3d587-3bd4-47d1-94e0-6024d7d97c64" name="Workbench">
+        <properties>
+          <property key="sourceText" type="INPUT" value="kotlin.String|eyJjb2xvclNjaGVtZSI6ImxpZ2h0In0=" />
+          <property key="targetText" type="INPUT" value="kotlin.String|eyJjb2xvclNjaGVtZSI6ImxpZ2h0In0=" />
+        </properties>
+      </developerToolConfiguration>
+      <developerToolConfiguration developerToolId="url-base64-encoder-decoder" id="0a8a6209-db2c-4e5c-9a4d-d949f179b888" name="Workbench">
+        <properties>
+          <property key="sourceText" type="INPUT" value="kotlin.String|{&quot;colorScheme&quot;:&quot;light&quot;}" />
+          <property key="targetText" type="INPUT" value="kotlin.String|eyJjb2xvclNjaGVtZSI6ImxpZ2h0In0=" />
+        </properties>
+      </developerToolConfiguration>
+      <developerToolConfiguration developerToolId="base64-encoder-decoder" id="68ab358f-17d5-42f6-8bb2-1f738fd6beaf" name="Workbench">
+        <properties>
+          <property key="sourceText" type="INPUT" value="kotlin.String|eyJjb2xvclNjaGVtZSI6ImRhcmsifQ%3D%3D" />
+          <property key="targetText" type="INPUT" value="kotlin.String|ZXlKamIyeHZjbE5qYUdWdFpTSTZJbVJoY21zaWZRJTNEJTNE" />
+        </properties>
+      </developerToolConfiguration>
+    </developerToolsConfigurations>
+  </component>
+</project>

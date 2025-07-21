@@ -1,10 +1,10 @@
 import React from 'react'
 import type { Route } from './+types/movieList'
-import { getMovieLists } from '~/methods/getMovieLists'
+import { getMovieList } from '~/methods/getMovieList'
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
   const movieListValue = params.movieListValue
-  const films = getMovieLists(movieListValue)
+  const films = getMovieList(movieListValue)
   return await films
 }
 

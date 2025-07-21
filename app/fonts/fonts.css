@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'Buduj-Sans-Semibold';
+  src:
+    url('Buduj-Sans-trial/BudujSansTRIAL-Semibold.woff2') format('woff2'),
+    url('Buduj-Sans-trial/BudujSansTRIAL-Semibold.woff') format('woff'),
+    url('Buduj-Sans-trial/BudujSansTRIAL-Semibold.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'Buduj-Sans-Regular';
+  src:
+    url('Buduj-Sans-trial/BudujSansTRIAL-Regular.woff2') format('woff2'),
+    url('Buduj-Sans-trial/BudujSansTRIAL-Regular.woff') format('woff'),
+    url('Buduj-Sans-trial/BudujSansTRIAL-Regular.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'Buduj-Sans-Medium';
+  src:
+    url('Buduj-Sans-trial/BudujSansTRIAL-Medium.woff2') format('woff2'),
+    url('Buduj-Sans-trial/BudujSansTRIAL-Medium.woff') format('woff'),
+    url('Buduj-Sans-trial/BudujSansTRIAL-Medium.ttf') format('ttf');
+}
