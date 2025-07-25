@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DeveloperToolsToolWindowSettingsV1" lastSelectedContentNodeId="url-base64-encoder-decoder">
+  <component name="DeveloperToolsToolWindowSettingsV1" lastSelectedContentNodeId="url-encoding-encoder-decoder">
     <developerToolsConfigurations>
       <developerToolConfiguration developerToolId="url-encoding-encoder-decoder" id="43d3d587-3bd4-47d1-94e0-6024d7d97c64" name="Workbench">
         <properties>
-          <property key="sourceText" type="INPUT" value="kotlin.String|eyJjb2xvclNjaGVtZSI6ImxpZ2h0In0=" />
-          <property key="targetText" type="INPUT" value="kotlin.String|eyJjb2xvclNjaGVtZSI6ImxpZ2h0In0=" />
+          <property key="sourceText" type="INPUT" value="kotlin.String|c" />
+          <property key="targetText" type="INPUT" value="kotlin.String|c" />
         </properties>
       </developerToolConfiguration>
       <developerToolConfiguration developerToolId="url-base64-encoder-decoder" id="0a8a6209-db2c-4e5c-9a4d-d949f179b888" name="Workbench">
@@ -21,5 +21,6 @@
         </properties>
       </developerToolConfiguration>
     </developerToolsConfigurations>
+    <expandedGroupNodeIds />
   </component>
 </project>

@@ -1,10 +1,11 @@
 import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router'
 import type { Route } from './+types/root'
 import './app.css'
-import Header from '~/components/Header'
-import { getCookie, setCookie } from '~/feature/cookie'
-import { getMovieList } from '~/methods/getMovieList'
-import { getPeopleList } from '~/methods/getPeopleList'
+import Header from '~/layout/Header'
+import { getCookie } from '~/feature/cookie'
+import { getMovieList, type MovieItem } from '~/methods/getMovieList'
+import { getPeopleList, type PeopleListItem } from '~/methods/getPeopleList'
+import type { ErrorMessage } from '~/methods/apiCall'
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -37,28 +38,39 @@ export function Layout({ children }: { children: React.ReactNode }) {
   )
 }
 
-export async function clientLoader() {
-  let mode = getCookie('mode')
-  const movies = await getMovieList('popular')
-  const people = await getPeopleList()
+type ClientLoaderType = {
+  mode: string
+  movies: MovieItem[] | ErrorMessage
+  people: PeopleListItem[] | ErrorMessage
+}
 
+export async function clientLoader(): Promise<ClientLoaderType> {
+  let mode = getCookie('mode')
   if (!mode) mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : ''
   if (mode === 'light') mode = ''
 
+  const moviesResponse = await getMovieList({ value: 'popular' })
+  const peopleResponse = await getPeopleList()
+
+  const loaderData = {
+    movies: 'results' in moviesResponse ? moviesResponse.results : moviesResponse,
+    people: 'results' in peopleResponse ? peopleResponse.results : peopleResponse,
+  }
+
   return {
     mode,
-    movies,
-    people,
+    ...loaderData,
   }
 }
 
 export default function App({ loaderData }: Route.ComponentProps) {
   loaderData.mode && document.documentElement.classList.add(loaderData.mode)
-  const {people, movies} = loaderData
+  const { movies, people } = loaderData
+
   return (
     <>
-      <Header people={people} />
-      <main className='peer-[:has(.opened)]:blur-md'>
+      <Header people={people} movies={movies} />
+      <main className='px-[56px] peer-[:has(.opened)]:blur-md'>
         <Outlet />
       </main>
     </>
