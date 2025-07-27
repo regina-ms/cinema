@@ -1,14 +1,12 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
-export function usePagination<T>(callback: () => Promise<T[]>) {
+export function usePagination<T>(getList: () => Promise<T[]>, pageLimit: number) {
   const [page, setPage] = useState<number>(1)
   const [list, setList] = useState<T[]>([])
-
   const observer = useRef<IntersectionObserver>(null)
 
-  const setObserver = (node: HTMLElement | null) => {
+  const setObserver = useCallback((node: HTMLElement | null) => {
     observer.current?.disconnect()
-    console.log({ node })
     if (!node) {
       return
     }
@@ -17,17 +15,17 @@ export function usePagination<T>(callback: () => Promise<T[]>) {
         if (entry.isIntersecting) {
           observer.current?.disconnect()
           setPage((prev) => prev + 1)
-          console.log(entry)
         }
       },
       { rootMargin: '0px 0px 75px 0px' },
     )
 
     observer.current.observe(node)
-  }
+  }, [])
 
   useEffect(() => {
-    callback().then((data) => setList([...list, ...data]))
+    if (page > pageLimit) return
+    getList().then((data) => setList([...list, ...data]))
   }, [page])
 
   return {

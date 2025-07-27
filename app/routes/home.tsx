@@ -1,8 +1,9 @@
 import type { Route } from './+types/home'
 import { getTrending, type TrendingArgs } from '~/methods/getTrending'
 import MovieCard from '~/ui/MovieCard'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { usePagination } from '~/feature/usePagination'
+import Loader from '~/ui/Loader'
 
 const DEFAULT_ARGS: TrendingArgs = {
   type: 'all',
@@ -16,9 +17,12 @@ export async function clientLoader() {
 export default function Home({ loaderData }: Route.ComponentProps) {
   if ('error' in loaderData) return <div>{loaderData.error}</div>
   const listElementRef = useRef<HTMLAnchorElement>(null)
+  const [loading, setLoading] = useState(false)
 
   const getList = async () => {
+    setLoading(true)
     const data = await getTrending({ ...DEFAULT_ARGS, page })
+    setLoading(false)
     if ('error' in data) {
       return []
     } else {
@@ -26,7 +30,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
     }
   }
 
-  const { list, page, setObserver } = usePagination(getList)
+  const { list, page, setObserver } = usePagination(getList, loaderData.total_pages)
 
   useEffect(() => {
     if (!list.length) return
@@ -38,6 +42,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       {list.map((movie, index) =>
         index === list.length - 1 ? <MovieCard {...movie} ref={listElementRef} /> : <MovieCard {...movie} />,
       )}
+      {loading && <Loader text={'загрузка'} className={'col-span-5 justify-center'} />}
     </ul>
   )
 }
