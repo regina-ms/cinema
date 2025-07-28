@@ -1,7 +1,5 @@
-import React from 'react'
-
 function person() {
-    return (<></>)
+  return <></>
 }
 
 export default person

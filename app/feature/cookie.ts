@@ -13,10 +13,10 @@ export function setCookie(
 
   let updatedCookie = encodeURIComponent(name) + '=' + encodeURIComponent(value)
 
-  for (let optionKey in options) {
+  for (const optionKey in options) {
     updatedCookie += '; ' + optionKey
-    // @ts-ignore
-    let optionValue = options[optionKey]
+    // @ts-expect-error
+    const optionValue = options[optionKey]
     if (optionValue !== true) {
       updatedCookie += '=' + optionValue
     }
@@ -26,7 +26,7 @@ export function setCookie(
 }
 
 export function getCookie(name: string) {
-  let matches = document.cookie.match(
+  const matches = document.cookie.match(
     new RegExp('(?:^|; )' + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)'),
   )
   return matches ? decodeURIComponent(matches[1]) : undefined

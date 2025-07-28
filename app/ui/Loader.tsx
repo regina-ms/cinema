@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react'
-import { animate, createScope, Scope, text, utils } from 'animejs'
+import { useEffect, useRef } from 'react'
+import { animate, createScope, Scope, utils } from 'animejs'
 
 type Props = {
   text: string
@@ -11,7 +11,7 @@ function Loader({ text, className }: Props) {
 
   useEffect(() => {
     const letters = utils.$('[data-animate]')
-    scope.current = createScope({ root: containerRef }).add((self) => {
+    scope.current = createScope({ root: containerRef }).add(() => {
       animate(letters, {
         y: [
           { to: '-100%', duration: 1000 },
@@ -23,13 +23,12 @@ function Loader({ text, className }: Props) {
     })
   }, [])
   return (
-    <div
-      className={`text-base_100 relative flex w-full items-end uppercase ${className}`}
-      ref={containerRef}
-    >
+    <div className={`text-base_100 relative flex w-full items-end uppercase ${className}`} ref={containerRef}>
       <span className='absolute bottom-0 opacity-20'>{text}</span>
-      {[...text].map((letter) => (
-        <span data-animate='animate'>{letter}</span>
+      {[...text].map((letter, index) => (
+        <span key={index} data-animate='animate'>
+          {letter}
+        </span>
       ))}
     </div>
   )

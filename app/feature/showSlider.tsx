@@ -1,7 +1,6 @@
 import { NextButton, PrevButton, Slide, Slider, SliderInner } from '~/components/Slider/Slider'
 import { Link } from 'react-router'
 import { imageSrc } from '~/feature/imageSrc'
-import React from 'react'
 import type { MovieItem } from '~/methods/getMovieList'
 import type { PeopleListItem } from '~/methods/getPeopleList'
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import SearchInput from '~/components/SearchInput'
 import { showMovieSlider, showPeopleSlider } from '~/feature/showSlider'
 import type { ResponseData } from '~/layout/Header'

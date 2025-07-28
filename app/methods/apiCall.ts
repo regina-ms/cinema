@@ -35,7 +35,7 @@ export async function apiCall<T>({ path, queryParams }: ApiCallArgs): Promise<Ap
       },
     })
     return response.json()
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Ошибка запроса:', error)
 
     return {

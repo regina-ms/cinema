@@ -1,4 +1,4 @@
-import React, { type Ref } from 'react'
+import { type Ref } from 'react'
 import type { MovieItem } from '~/methods/getMovieList'
 import { imageSrc } from '~/feature/imageSrc'
 import { Link } from 'react-router'

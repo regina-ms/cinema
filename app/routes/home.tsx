@@ -15,7 +15,9 @@ export async function clientLoader() {
 }
 
 export default function Home({ loaderData }: Route.ComponentProps) {
-  if ('error' in loaderData) return <div>{loaderData.error}</div>
+  if ('error' in loaderData) {
+    return <div>{loaderData.error}</div>
+  }
   const listElementRef = useRef<HTMLAnchorElement>(null)
   const [loading, setLoading] = useState(false)
 
@@ -40,7 +42,11 @@ export default function Home({ loaderData }: Route.ComponentProps) {
   return (
     <ul className={`grid grid-cols-5 gap-x-[16px] gap-y-[30px] py-[30px] next-page-${page}`}>
       {list.map((movie, index) =>
-        index === list.length - 1 ? <MovieCard {...movie} ref={listElementRef} /> : <MovieCard {...movie} />,
+        index === list.length - 1 ? (
+          <MovieCard key={movie.id} {...movie} ref={listElementRef} />
+        ) : (
+          <MovieCard key={movie.id} {...movie} />
+        ),
       )}
       {loading && <Loader text={'загрузка'} className={'col-span-5 justify-center'} />}
     </ul>

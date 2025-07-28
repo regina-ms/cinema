@@ -26,6 +26,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <title>MovieHub</title>
         <Meta />
         <Links />
       </head>
@@ -64,7 +65,8 @@ export async function clientLoader(): Promise<ClientLoaderType> {
 }
 
 export default function App({ loaderData }: Route.ComponentProps) {
-  loaderData.mode && document.documentElement.classList.add(loaderData.mode)
+  if (loaderData) document.documentElement.classList.add(loaderData.mode)
+
   const { movies, people } = loaderData
 
   return (

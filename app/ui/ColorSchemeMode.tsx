@@ -43,17 +43,29 @@ function ColorSchemeMode() {
         className={`bg-dark dark:bg-main_100 text-base_200 absolute right-0 flex min-w-[180px] translate-y-3 flex-col gap-[12px] rounded-[8px] px-[18px] py-[20px] transition ${opened ? 'visible' : 'invisible'}`}
       >
         <li>
-          <button onClick={onCLick} value='light' className='before:bg-icon-sun before:filter-main_100 text-main_100 dark:text-dark_100 capitalize text-nowrap before:bg-default dark:before:filter-dark flex items-center gap-[8px] before:size-[20px]'>
+          <button
+            onClick={onCLick}
+            value='light'
+            className='before:bg-icon-sun before:filter-main_100 text-main_100 dark:text-dark_100 before:bg-default dark:before:filter-dark flex items-center gap-[8px] text-nowrap capitalize before:size-[20px]'
+          >
             светлая тема
           </button>
         </li>
         <li>
-          <button onClick={onCLick} value='dark' className='before:bg-icon-moon before:filter-main_100 text-main_100 dark:text-dark_100 capitalize text-nowrap before:bg-default dark:before:filter-dark flex items-center gap-[8px] before:size-[20px]'>
+          <button
+            onClick={onCLick}
+            value='dark'
+            className='before:bg-icon-moon before:filter-main_100 text-main_100 dark:text-dark_100 before:bg-default dark:before:filter-dark flex items-center gap-[8px] text-nowrap capitalize before:size-[20px]'
+          >
             темная тема
           </button>
         </li>
         <li>
-          <button onClick={onCLick} value='system' className='before:filter-main_100 text-main_100 dark:text-dark_100 capitalize text-nowrap before:bg-default dark:before:filter-dark flex items-center gap-[8px] before:size-[20px] before:bg-icon-system'>
+          <button
+            onClick={onCLick}
+            value='system'
+            className='before:filter-main_100 text-main_100 dark:text-dark_100 before:bg-default dark:before:filter-dark before:bg-icon-system flex items-center gap-[8px] text-nowrap capitalize before:size-[20px]'
+          >
             системная
           </button>
         </li>

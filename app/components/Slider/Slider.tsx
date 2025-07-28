@@ -16,14 +16,18 @@ interface Props extends React.PropsWithChildren {
 
 export function Slider({ className, children }: Props) {
   const [emblaRef, emblaApi] = useEmblaCarousel()
-  return <SliderContext value={{ emblaApi, emblaRef }}><div className={className}>{children}</div></SliderContext>
+  return (
+    <SliderContext value={{ emblaApi, emblaRef }}>
+      <div className={className}>{children}</div>
+    </SliderContext>
+  )
 }
 
 export function SliderInner({ children }: React.PropsWithChildren) {
   const { emblaRef } = useContext(SliderContext)
   return (
     <div className='h-full md:overflow-hidden' ref={emblaRef}>
-      <div className='flex h-full ml-[36px] mr-[56px]'>{children}</div>
+      <div className='mr-[56px] ml-[36px] flex h-full'>{children}</div>
     </div>
   )
 }
@@ -37,7 +41,12 @@ export function NextButton({ children, className }: Props) {
   const { nextBtnDisabled, onNextButtonClick } = useSliderNavigation(emblaApi)
 
   return (
-    <button type='button' className={`transition ${className} ${nextBtnDisabled ? 'opacity-0 invisible' : ''}`} onClick={onNextButtonClick} disabled={nextBtnDisabled}>
+    <button
+      type='button'
+      className={`transition ${className} ${nextBtnDisabled ? 'invisible opacity-0' : ''}`}
+      onClick={onNextButtonClick}
+      disabled={nextBtnDisabled}
+    >
       {children}
     </button>
   )
@@ -48,7 +57,12 @@ export function PrevButton({ children, className }: Props) {
   const { prevBtnDisabled, onPrevButtonClick } = useSliderNavigation(emblaApi)
 
   return (
-    <button type='button' className={`transition ${className} ${prevBtnDisabled ? 'opacity-0 invisible' : ''}`} onClick={onPrevButtonClick} disabled={prevBtnDisabled}>
+    <button
+      type='button'
+      className={`transition ${className} ${prevBtnDisabled ? 'invisible opacity-0' : ''}`}
+      onClick={onPrevButtonClick}
+      disabled={prevBtnDisabled}
+    >
       {children}
     </button>
   )
