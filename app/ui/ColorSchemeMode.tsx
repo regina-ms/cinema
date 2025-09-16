@@ -4,7 +4,8 @@ import { getCookie, setCookie } from '~/feature/cookie'
 function ColorSchemeMode() {
   const [opened, setOpened] = useState(false)
   const mode = getCookie('mode')
-  const [icon, setIcon] = useState<string>(mode || 'dark')
+
+  const [icon, setIcon] = useState<string>('bg-icon-moon')
 
   useEffect(() => {
     if (mode === 'dark') {
@@ -35,18 +36,18 @@ function ColorSchemeMode() {
     <div className='relative ml-[30px]'>
       <button
         onClick={() => setOpened((prev) => !prev)}
-        className='bg-main_100 flex size-[40px] cursor-pointer items-center justify-center rounded-[100%]'
+        className='bg-main_100 flex cursor-pointer items-center justify-center rounded-[100%] md:size-[40px]'
       >
-        <div className={`bg-default ${icon} filter-dark size-[30px]`}></div>
+        <div className={`bg-default ${icon} filter-dark`}></div>
       </button>
       <ul
-        className={`bg-dark dark:bg-main_100 text-base_200 absolute right-0 flex min-w-[180px] translate-y-3 flex-col gap-[12px] rounded-[8px] px-[18px] py-[20px] transition ${opened ? 'visible' : 'invisible'}`}
+        className={`bg-dark dark:bg-main_100 text-base_200 absolute right-0 flex min-w-[180px] translate-y-3 flex-col gap-[12px] rounded-[8px] pt-[12px] pr-[10px] pb-[12px] pl-[10px] transition md:pt-[20px] md:pr-[18px] md:pb-[20px] md:pl-[18px] ${opened ? 'visible' : 'invisible'}`}
       >
         <li>
           <button
             onClick={onCLick}
             value='light'
-            className='before:bg-icon-sun before:filter-main_100 text-main_100 dark:text-dark_100 before:bg-default dark:before:filter-dark flex items-center gap-[8px] text-nowrap capitalize before:size-[20px]'
+            className='before:bg-icon-sun before:filter-main_100 text-main_100 dark:text-dark_100 before:bg-default dark:before:filter-dark flex items-center gap-[8px] text-nowrap capitalize'
           >
             светлая тема
           </button>

@@ -1,16 +1,34 @@
 @import 'tailwindcss';
 @import './fonts/fonts.css';
 
+html {
+  @apply overflow-x-clip text-[62.5%];
+  --init-width: 360;
+  --init-width_units: calc(var(--init-width) * 1px);
+  --screen-delta: calc((100vw - var(--init-width_units)) / (var(--init-width) / 100) / 100);
+
+  button {
+    @apply cursor-pointer;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  html {
+    --init-width: 1920;
+  }
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --font-buduj-sans: Buduj-Sans-Semibold, sans-serif;
   --font-manrope: Manrope, sans-serif;
-  --text-header_100: 6rem;
-  --text-header_200: 4.2rem;
-  --text-base_100: 2.6rem;
-  --text-base_200: 1.8rem;
-  --text-base_300: 1.6rem;
+
+  --size-header_100: 6;
+  --size-header_200: 4.2;
+  --size-base_100: 2.6;
+  --size-base_200: 1.8;
+  --size-base_300: 1.6;
 
   --breakpoint-md: 1000px;
 
@@ -18,6 +36,7 @@
   --color-dark_100: hsl(235, 66%, 30%);
   --color-dark_180: hsl(235, 66%, 30%, 80%);
   --color-dark_200: hsl(235, 43%, 26%);
+  --color-dark_280: hsl(235, 43%, 26%, 80%);
   --color-main_100: hsl(46, 84%, 52%);
   --color-main_170: hsl(46, 84%, 52%, 70%);
   --color-main_200: hsl(46, 100%, 65%);
@@ -33,6 +52,9 @@
   --bg-icon-system: url("data:image/svg+xml,%3Csvg viewBox='0 0 1024 1024' class='icon' version='1.1' xmlns='http://www.w3.org/2000/svg' fill='%23000000'%3E%3Cg id='SVGRepo_bgCarrier' stroke-width='0'%3E%3C/g%3E%3Cg id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'%3E%3C/g%3E%3Cg id='SVGRepo_iconCarrier'%3E%3Cpath d='M772.672 575.808V448.192l70.848-70.848a370.688 370.688 0 0 0-56.512-97.664l-96.64 25.92-110.528-63.808-25.92-96.768a374.72 374.72 0 0 0-112.832 0l-25.92 96.768-110.528 63.808-96.64-25.92c-23.68 29.44-42.816 62.4-56.576 97.664l70.848 70.848v127.616l-70.848 70.848c13.76 35.264 32.832 68.16 56.576 97.664l96.64-25.92 110.528 63.808 25.92 96.768a374.72 374.72 0 0 0 112.832 0l25.92-96.768 110.528-63.808 96.64 25.92c23.68-29.44 42.816-62.4 56.512-97.664l-70.848-70.848z m39.744 254.848l-111.232-29.824-55.424 32-29.824 111.36c-37.76 10.24-77.44 15.808-118.4 15.808-41.024 0-80.768-5.504-118.464-15.808l-29.888-111.36-55.424-32-111.168 29.824A447.552 447.552 0 0 1 64 625.472L145.472 544v-64L64 398.528A447.552 447.552 0 0 1 182.592 193.28l111.168 29.824 55.424-32 29.888-111.36A448.512 448.512 0 0 1 497.472 64c41.024 0 80.768 5.504 118.464 15.808l29.824 111.36 55.424 32 111.232-29.824c56.32 55.68 97.92 126.144 118.592 205.184L849.472 480v64l81.536 81.472a447.552 447.552 0 0 1-118.592 205.184zM497.536 627.2a115.2 115.2 0 1 0 0-230.4 115.2 115.2 0 0 0 0 230.4z m0 76.8a192 192 0 1 1 0-384 192 192 0 0 1 0 384z' fill='%23000000'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
   --bg-icon-close: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='%23e3e3e3'%3E%3Cpath d='m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z'/%3E%3C/svg%3E");
   --bg-icon-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='%23e3e3e3'%3E%3Cpath d='M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z'/%3E%3C/svg%3E");
+  --bg-icon-sort: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='%23e3e3e3'%3E%3Cpath d='M120-240v-80h240v80H120Zm0-200v-80h480v80H120Zm0-200v-80h720v80H120Z'/%3E%3C/svg%3E");
+  --bg-icon-filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='%23e3e3e3'%3E%3Cpath d='M710-150q-63 0-106.5-43.5T560-300q0-63 43.5-106.5T710-450q63 0 106.5 43.5T860-300q0 63-43.5 106.5T710-150Zm0-80q29 0 49.5-20.5T780-300q0-29-20.5-49.5T710-370q-29 0-49.5 20.5T640-300q0 29 20.5 49.5T710-230Zm-550-30v-80h320v80H160Zm90-250q-63 0-106.5-43.5T100-660q0-63 43.5-106.5T250-810q63 0 106.5 43.5T400-660q0 63-43.5 106.5T250-510Zm0-80q29 0 49.5-20.5T320-660q0-29-20.5-49.5T250-730q-29 0-49.5 20.5T180-660q0 29 20.5 49.5T250-590Zm230-30v-80h320v80H480Zm230 320ZM250-660Z'/%3E%3C/svg%3E");
+  --bg-icon-burger: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='%23e3e3e3'%3E%3Cpath d='M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z'/%3E%3C/svg%3E");
 
   /* FILTERS */
   --filter-white: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(2%) hue-rotate(202deg) brightness(104%)
@@ -45,8 +67,37 @@
     contrast(98%);
 }
 
+@utility px-container {
+  padding-left: 16px;
+  padding-right: 16px;
+
+  @media (min-width: 1000px) {
+    padding-left: 56px;
+    padding-right: 56px;
+  }
+}
+
+@utility text-* {
+  --fontSize: calc(--value(--size-*) * 0.7);
+  font-size: clamp(
+    1rem,
+    calc(var(--fontSize) * 10 * var(--screen-delta) + calc(var(--fontSize) * 1rem)),
+    20rem
+  );
+
+  @media (min-width: 1000px) {
+    --fontSize: --value(--size-*);
+  }
+}
+
 @utility bg-icon-* {
   background-image: --value(--bg-icon-*);
+  min-width: 20px;
+  height: 20px;
+  @media (min-width: 1000px) {
+    min-width: 40px;
+    height: 40px;
+  }
 }
 
 @utility filter-* {
@@ -65,15 +116,4 @@
 
 @utility invisible {
   opacity: 0;
-}
-
-html {
-  @apply overflow-x-clip text-[62.5%];
-}
-
-html,
-body {
-  button {
-    @apply cursor-pointer;
-  }
 }

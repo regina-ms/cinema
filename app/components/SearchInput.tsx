@@ -35,12 +35,12 @@ function SearchInput({ onChangeHandler }: Props) {
   }
 
   return (
-    <label className='border-dark_200/10 invisible flex w-[850px] items-center gap-[16px] rounded-[8px] border px-[20px] py-[12px] opacity-0 transition group-[.opened]:visible group-[.opened]:opacity-100'>
-      <div className='bg-icon-search filter-main_100 bg-default size-[40px]' />
+    <label className='invisible flex items-center gap-[16px] rounded-[8px] opacity-0 transition group-[.opened]:visible group-[.opened]:w-full group-[.opened]:opacity-100 md:px-[20px] md:py-[12px] md:group-[.opened]:w-[850px]'>
+      <div className='bg-icon-search filter-main_100 bg-default' />
       <input
         onChange={onChange}
         value={inputVal}
-        className='text-base_100 w-full focus-visible:outline-0'
+        className='md:text-base_100 w-full text-[12px] focus-visible:outline-0'
         type='text'
         placeholder='Название фильма, сериала или имя актёра, режиссёра'
       />

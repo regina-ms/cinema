@@ -6,6 +6,7 @@ import { getCookie } from '~/feature/cookie'
 import { getMovieList, type MovieItem } from '~/methods/getMovieList'
 import { getPeopleList, type PeopleListItem } from '~/methods/getPeopleList'
 import type { ErrorMessage } from '~/methods/apiCall'
+import { PopupProvider, popupRegistry } from '~/hooks/usePopup'
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -30,11 +31,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className='text-dark_100 dark:text-main_100 min-h-[1200px]'>
-        {children}
-        <ScrollRestoration />
-        <Scripts />
-      </body>
+      <PopupProvider registry={popupRegistry}>
+        <body className='text-dark_100 dark:text-main_100 min-h-[1200px]'>
+          {children}
+          <ScrollRestoration />
+          <Scripts />
+        </body>
+      </PopupProvider>
     </html>
   )
 }
@@ -72,7 +75,7 @@ export default function App({ loaderData }: Route.ComponentProps) {
   return (
     <>
       <Header people={people} movies={movies} />
-      <main className='px-[56px] peer-[:has(.opened)]:blur-md'>
+      <main className='px-container peer-[:has(.opened)]:blur-md'>
         <Outlet />
       </main>
     </>

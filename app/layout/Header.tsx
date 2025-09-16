@@ -12,11 +12,13 @@ export type ResponseData = {
 
 function Header({ people, movies }: ResponseData) {
   return (
-    <header className='peer has-[.opened]:bg-dark_200 sticky top-0 z-10 flex w-full items-center px-[56px] py-[18px]'>
+    <header className='px-container peer has-[.opened]:bg-dark_200 px-container sticky top-0 z-10 flex w-full items-center py-[20px] md:py-[36px]'>
       <Link to='/'>
-        <img src='/assets/MovieHub.svg' className='mr-[40px] max-w-[250px]' />
+        <img src='/assets/MovieHub.svg' className='max-w-[100px] md:mr-[40px] md:max-w-[250px]' />
       </Link>
-      <ul className='text-base_200 flex items-center gap-[32px]'>
+      <div className='bg-default bg-icon-burger filter-main_100 ml-[12px] md:hidden'></div>
+
+      <ul className='md:text-base_200 hidden md:flex md:items-center md:gap-[32px]'>
         <li>
           <Link to={{ pathname: '/movies/popular' }}>Фильмы</Link>{' '}
         </li>
