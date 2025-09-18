@@ -4,8 +4,8 @@
     <developerToolsConfigurations>
       <developerToolConfiguration developerToolId="url-encoding-encoder-decoder" id="43d3d587-3bd4-47d1-94e0-6024d7d97c64" name="Workbench">
         <properties>
-          <property key="sourceText" type="INPUT" value="kotlin.String|c" />
-          <property key="targetText" type="INPUT" value="kotlin.String|c" />
+          <property key="sourceText" type="INPUT" value="kotlin.String|28,12" />
+          <property key="targetText" type="INPUT" value="kotlin.String|28%2C12" />
         </properties>
       </developerToolConfiguration>
       <developerToolConfiguration developerToolId="url-base64-encoder-decoder" id="0a8a6209-db2c-4e5c-9a4d-d949f179b888" name="Workbench">

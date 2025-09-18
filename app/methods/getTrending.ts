@@ -8,5 +8,5 @@ export type TrendingArgs = {
 }
 
 export async function getTrending({ type, time_window, page }: TrendingArgs) {
-  return await apiCall<MovieItem>({ path: `trending/${type}/${time_window}`, queryParams: [`page=${page || 1}`] })
+  return await apiCall<MovieItem>({ path: `trending/${type}/${time_window}`, page })
 }

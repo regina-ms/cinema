@@ -6,10 +6,13 @@ import type { PeopleListItem } from '~/methods/getPeopleList'
 
 export function showMovieSlider(list: MovieItem[]) {
   return (
-    <Slider className='group/slider relative'>
+    <Slider className='group/slider px-container relative'>
       <SliderInner>
         {list.map((item) => (
-          <Slide key={item.id} className='z-20 ml-[20px] h-fit min-w-0 shrink-0 basis-[45%] rounded'>
+          <Slide
+            key={item.id}
+            className='z-20 ml-[12px] h-fit min-w-0 shrink-0 basis-[60%] rounded first:ml-0 md:ml-[20px] md:basis-[45%]'
+          >
             <Link to={`/movie/${item.id}`} className={'group/item relative block'}>
               <img src={imageSrc(item.backdrop_path)} className='aspect-video w-full object-cover object-center' />
               <div className='bg-dark_180 absolute inset-0 flex flex-col items-center justify-center p-[20px] opacity-0 transition group-hover/item:opacity-100'>
@@ -17,6 +20,7 @@ export function showMovieSlider(list: MovieItem[]) {
                   {item.title}
                 </div>
               </div>
+              <div className='text-base_200 mt-[8px] md:hidden'>{item.title}</div>
             </Link>
           </Slide>
         ))}
@@ -29,10 +33,13 @@ export function showMovieSlider(list: MovieItem[]) {
 
 export function showPeopleSlider(list: PeopleListItem[]) {
   return (
-    <Slider className='group/slider relative'>
+    <Slider className='group/slider px-container relative'>
       <SliderInner>
         {list.map((item) => (
-          <Slide key={item.id} className='ml-[20px] h-fit min-w-0 shrink-0 basis-[11%]'>
+          <Slide
+            key={item.id}
+            className='ml:basis-[11%] ml-[12px] h-fit min-w-0 shrink-0 basis-[25%] first:ml-[0] md:ml-[20px]'
+          >
             <Link to={`/person/${item.id}`}>
               <img
                 src={imageSrc(item.profile_path)}

@@ -23,7 +23,7 @@ export const links: Route.LinksFunction = () => [
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en' className='bg-light dark:bg-dark_100 font-manrope has-[.opened]:overflow-hidden'>
+    <html lang='en' className='bg-light dark:bg-dark_100 font-manrope'>
       <head>
         <meta charSet='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />

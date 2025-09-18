@@ -18,5 +18,5 @@ export type Options = {
 
 export async function getMovieList({ value, queryParams }: Options) {
   const path = 'movie/' + value
-  return await apiCall<MovieItem>({ path, queryParams: queryParams?.concat(['page=1']) })
+  return await apiCall<MovieItem>({ path, queryParams })
 }

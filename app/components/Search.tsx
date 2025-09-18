@@ -2,6 +2,7 @@ import { useState } from 'react'
 import SearchInput from '~/components/SearchInput'
 import { showMovieSlider, showPeopleSlider } from '~/feature/showSlider'
 import type { ResponseData } from '~/layout/Header'
+import { toggleScroll } from '~/feature/scroll'
 
 function Search({ people, movies }: ResponseData) {
   const [opened, setOpened] = useState(false)
@@ -33,13 +34,18 @@ function Search({ people, movies }: ResponseData) {
     )
   }
 
+  const onClickHandle = () => {
+    toggleScroll()
+    setOpened((prev) => !prev)
+  }
+
   return (
     <div
       className={`group ml-auto flex items-center gap-[24px] md:p-0 ${opened ? 'opened bg-dark_200 absolute left-0 z-20 w-full pr-[16px] pl-[16px] md:static md:w-fit md:bg-transparent' : ''}`}
     >
       <SearchInput onChangeHandler={setLists} />
       <button
-        onClick={() => setOpened((prev) => !prev)}
+        onClick={onClickHandle}
         className='group-[.opened]:bg-icon-close bg-icon-search bg-default filter-main_100'
       ></button>
       <div className='bg-dark_200 invisible absolute inset-0 top-full flex h-fit min-h-[250px] flex-col gap-[50px] py-[15px] opacity-0 group-[.opened]:visible group-[.opened]:opacity-100'>

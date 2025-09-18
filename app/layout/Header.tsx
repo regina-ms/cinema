@@ -16,7 +16,6 @@ function Header({ people, movies }: ResponseData) {
       <Link to='/'>
         <img src='/assets/MovieHub.svg' className='max-w-[100px] md:mr-[40px] md:max-w-[250px]' />
       </Link>
-      <div className='bg-default bg-icon-burger filter-main_100 ml-[12px] md:hidden'></div>
 
       <ul className='md:text-base_200 hidden md:flex md:items-center md:gap-[32px]'>
         <li>

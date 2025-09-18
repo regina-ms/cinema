@@ -7,5 +7,5 @@ export type PeopleListItem = {
 }
 
 export async function getPeopleList() {
-  return await apiCall<PeopleListItem>({ path: 'person/popular', queryParams: ['page=1'] })
+  return await apiCall<PeopleListItem>({ path: 'person/popular' })
 }

@@ -1,6 +1,8 @@
 export type ApiCallArgs = {
   path: string
   queryParams?: string[]
+  page?: number
+  language?: string
 }
 
 export function slashParam(rawParam: string) {
@@ -18,11 +20,17 @@ export type ErrorMessage = {
   error: string
 }
 
-const errorMessage = 'не удалось получить доступ к АПИ'
+export const errorMessage = 'не удалось получить доступ к АПИ'
 
-export async function apiCall<T>({ path, queryParams }: ApiCallArgs): Promise<ApiCallResponse<T> | ErrorMessage> {
-  const language = 'ru-RU'
-  const fullQuery = queryParams ? queryParams.join('&') + `&language=${language}` : `language=${language}`
+export async function apiCall<T>({
+  path,
+  queryParams = [],
+  page = 1,
+  language = 'ru-RU',
+}: ApiCallArgs): Promise<ApiCallResponse<T> | ErrorMessage> {
+  const generalQueryParams = `language=${language}` + `&page=${page}`
+
+  const fullQuery = queryParams ? queryParams.join('&') + `&${generalQueryParams}` : generalQueryParams
 
   const url = `https://api.themoviedb.org/3${slashParam(path)}?${fullQuery}`
   console.log(url)
@@ -36,7 +44,7 @@ export async function apiCall<T>({ path, queryParams }: ApiCallArgs): Promise<Ap
     })
     return response.json()
   } catch (error: unknown) {
-    console.error('Ошибка запроса:', error)
+    console.error('Ошибка запроса:', error + url)
 
     return {
       error: errorMessage,

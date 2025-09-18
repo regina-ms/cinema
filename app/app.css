@@ -12,6 +12,16 @@ html {
   }
 }
 
+html.hide-scroll {
+  /* 'clip' вместо 'hidden' необходим для корректной работы position:sticky */
+  @apply overflow-x-clip overflow-y-clip;
+}
+
+html.hide-scroll body {
+  /* 'clip' вместо 'hidden' необходим для корректной работы position:sticky */
+  @apply overflow-x-clip overflow-y-clip;
+}
+
 @media screen and (min-width: 1000px) {
   html {
     --init-width: 1920;
@@ -26,6 +36,7 @@ html {
 
   --size-header_100: 6;
   --size-header_200: 4.2;
+
   --size-base_100: 2.6;
   --size-base_200: 1.8;
   --size-base_300: 1.6;
@@ -79,14 +90,10 @@ html {
 
 @utility text-* {
   --fontSize: calc(--value(--size-*) * 0.7);
-  font-size: clamp(
-    1rem,
-    calc(var(--fontSize) * 10 * var(--screen-delta) + calc(var(--fontSize) * 1rem)),
-    20rem
-  );
+  font-size: clamp(1rem, calc(var(--fontSize) * 10 * var(--screen-delta) + calc(var(--fontSize) * 1rem)), 20rem);
 
   @media (min-width: 1000px) {
-    --fontSize: --value(--size-*);
+    --fontSize: --value(--size- *);
   }
 }
 
@@ -117,3 +124,35 @@ html {
 @utility invisible {
   opacity: 0;
 }
+
+@utility scrollbar-transparent {
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent
+  }
+}
+
+@utility scrollbar-custom {
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-dark_280);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: var(--color-main_170);
+  }
+}
+

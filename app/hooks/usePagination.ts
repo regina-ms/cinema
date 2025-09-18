@@ -1,14 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-type Args<T> = {
-  getList: () => Promise<T[]>
+type Args = {
+  _setList: (page: number) => Promise<any>
   pageLimit: number
-  initList: T[]
 }
 
-export function usePagination<T>({ getList, pageLimit, initList }: Args<T>) {
+export function usePagination({ _setList, pageLimit }: Args) {
   const [page, setPage] = useState<number>(1)
-  const [list, setList] = useState<T[]>(initList)
   const observer = useRef<IntersectionObserver>(null)
 
   const setObserver = useCallback((node: HTMLElement | null) => {
@@ -32,12 +30,11 @@ export function usePagination<T>({ getList, pageLimit, initList }: Args<T>) {
   useEffect(() => {
     if (page === 1) return
     if (page > pageLimit) return
-    getList().then((data) => setList([...list, ...data]))
+    _setList(page)
   }, [page])
 
   return {
-    list,
-    page,
     setObserver,
+    page,
   }
 }

@@ -30,6 +30,7 @@ export default defineConfig([
     rules: {
       '@typescript-eslint/ban-ts-comment': 'off',
       'no-useless-escape': 'warn',
+      '@typescript-eslint/no-explicit-any': 'warn',
     },
   },
 ])

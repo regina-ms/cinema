@@ -1,5 +1,5 @@
 function Filter() {
-  return <div>Filter</div>
+  return <div className='absolute'>Filter</div>
 }
 
 export default Filter

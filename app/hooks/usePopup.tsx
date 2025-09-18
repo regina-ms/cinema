@@ -88,7 +88,12 @@ export function PopupProvider({ registry, portalContainer, children }: PopupProv
     ? (() => {
         const Component = registry[current.name]
         const content = (
-          <div className='fixed inset-0 size-full bg-gray-600'>
+          <div
+            className='opened fixed top-0 left-0 z-30 size-[100svh] bg-gray-600 bg-gray-600/50 backdrop-blur-sm'
+            onClick={(e) => {
+              if (e.target === e.currentTarget) closePopup()
+            }}
+          >
             <Component {...current.props} onClose={closePopup} />
           </div>
         )

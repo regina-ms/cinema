@@ -27,7 +27,7 @@ export function SliderInner({ children }: React.PropsWithChildren) {
   const { emblaRef } = useContext(SliderContext)
   return (
     <div className='h-full md:overflow-hidden' ref={emblaRef}>
-      <div className='mr-[56px] ml-[36px] flex h-full'>{children}</div>
+      <div className='flex h-full'>{children}</div>
     </div>
   )
 }
